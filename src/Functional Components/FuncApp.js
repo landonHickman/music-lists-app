@@ -13,16 +13,19 @@ const FuncApp = () => {
   ])
 
   const addSong = (song) => {
-    console.log('song',song)
+    // console.log('song',song)
     setFuncSongs( [song, ...funcSongs])
     console.log(funcSongs)
   }
 
+  const deleteSong = (id) => {
+    setFuncSongs(funcSongs.filter(song => song.id !== id))
+  }
   return(
     <Container style={{paddingTop: '25px'}}>
       <Header as='h1'>React Functional Music App</Header>
       <FuncSongForm addSong={addSong}/>
-      <FuncSongs funcSongs={funcSongs}/>
+      <FuncSongs funcSongs={funcSongs} deleteSong={deleteSong}/>
     </Container>
   )
 }

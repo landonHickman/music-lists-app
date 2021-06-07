@@ -3,7 +3,7 @@ import { Table } from 'semantic-ui-react'
 import FuncSong from './FuncSong'
 
 const FuncSongs = (props) => {
-  const {funcSongs} = props
+  const {funcSongs, deleteSong} = props
 
   return(
       <Table celled>
@@ -18,7 +18,7 @@ const FuncSongs = (props) => {
         </Table.Header>
 
         <Table.Body>
-        {funcSongs.map (songs => <FuncSong key={songs.id} {...songs}/>)}  
+        {funcSongs.map (songs => <FuncSong key={songs.id} {...songs} deleteSong={deleteSong}/>)}  
         </Table.Body>
       </Table>
   )

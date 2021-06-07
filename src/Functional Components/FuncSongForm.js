@@ -15,10 +15,11 @@ const FuncSongForm = (props) => {
      
       
     } else {
-
-      console.log('look here', {name, artist, rando})
+      // console.log('look here', {name, artist, rando})
      addSong({name: name, artist: artist, id: rando()})
     }
+    setName('')
+    setName('')
   }
   
 
