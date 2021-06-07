@@ -63,7 +63,7 @@ class App extends React.Component {
   render(){
     return (
       <Container style={{paddingTop: '25px'}}>
-        <Header as='h1'>React Music App</Header>
+        <Header as='h1'>React Class Music App</Header>
         <br/>
         <SongForm addSong={this.addSong}/>
         <br/>
