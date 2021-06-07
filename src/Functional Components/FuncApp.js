@@ -18,14 +18,20 @@ const FuncApp = () => {
     console.log(funcSongs)
   }
 
+  const editSong = (song) => {
+    let updateSong = funcSongs.map(s => s.id === song.id ? song : s)
+    setFuncSongs(updateSong)
+  }
+
   const deleteSong = (id) => {
     setFuncSongs(funcSongs.filter(song => song.id !== id))
   }
+
   return(
     <Container style={{paddingTop: '25px'}}>
       <Header as='h1'>React Functional Music App</Header>
       <FuncSongForm addSong={addSong}/>
-      <FuncSongs funcSongs={funcSongs} deleteSong={deleteSong}/>
+      <FuncSongs funcSongs={funcSongs} deleteSong={deleteSong} editSong={editSong}/>
     </Container>
   )
 }

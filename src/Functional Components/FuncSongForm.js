@@ -2,7 +2,7 @@ import React, {useState,} from 'react'
 import { Form } from 'semantic-ui-react'
 
 const FuncSongForm = (props) => {
-  const {id, addSong} = props
+  const {id, addSong, editSong} = props
   const [name, setName] = useState(props.name ? props.name : '')
   const [artist, setArtist] = useState(props.artist ? props.artist : '')
 
@@ -12,14 +12,13 @@ const FuncSongForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(id){
-     
-      
+     editSong({name: name, artist: artist, id: id})  
     } else {
       // console.log('look here', {name, artist, rando})
-     addSong({name: name, artist: artist, id: rando()})
+      addSong({name: name, artist: artist, id: rando()})
+      setName('')
+      setArtist('')
     }
-    setName('')
-    setName('')
   }
   
 
