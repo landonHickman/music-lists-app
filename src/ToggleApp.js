@@ -5,7 +5,7 @@ const ToggleApp = () => {
   const [toggle, setToggle] = useState(false)
   return (
     <div style={{textAlign: 'Center'}}>
-      <h1 onClick={()=>setToggle(!toggle)}>Unmount/Mount</h1>
+      <h1 onClick={()=>setToggle(!toggle)}>Mount/Unmount</h1>
       {toggle && <App />}
     </div>
   )

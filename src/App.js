@@ -29,18 +29,37 @@ class App extends React.Component {
     console.log('component unmounted')
   }
 
+  // addSong = (song) => {
+  //   console.log(song)
+  //   let newSongs = [...this.state.songs, song]
+  //   this.setState({
+  //     songs: newSongs
+  //   })
+  // }
   addSong = (song) => {
-    let newSongs = [...this.state.songs, song]
-    this.setState({
-      songs: newSongs
-    })
+    this.setState({songs: [...this.state.songs, song]})
   }
+
+  // deleteSong = (id) => {
+  //   let newSongs = this.state.songs.filter(s => s.id !== id)
+  //   this.setState({
+  //     songs: newSongs
+  //   })
+  // }
   deleteSong = (id) => {
-    let newSongs = this.state.songs.filter(s => s.id !== id)
-    this.setState({
-      songs: newSongs
-    })
+    this.setState({songs: this.state.songs.filter(s => s.id !== id)})
   }
+  
+  // editSong = (song) => {
+  //   let editedSongs = this.state.songs.map (s => s.id === song.id ? song : s)
+  //   this.setState({
+  //     songs: editedSongs
+  //   })
+  // }
+  editSong = (song) => {
+    this.setState({songs: this.state.songs.map (s => s.id === song.id ? song : s)})
+  }
+
   render(){
     return (
       <Container style={{paddingTop: '25px'}}>
@@ -48,7 +67,7 @@ class App extends React.Component {
         <br/>
         <SongForm addSong={this.addSong}/>
         <br/>
-        <Songs songs={this.state.songs} deleteSong={this.deleteSong}/>
+        <Songs songs={this.state.songs} deleteSong={this.deleteSong} editSong={this.editSong}/>
       </Container>
     )
   }

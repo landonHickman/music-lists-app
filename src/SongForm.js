@@ -2,16 +2,31 @@ import React from 'react'
 import { Form } from 'semantic-ui-react';
 
 class SongForm extends React.Component {
-  state = {name: "", artist: "", };
+  //have to set state equal to props so that name/artist would show up in the input box.
+  //also we have to pass props down so it will be visible in the box.
+  state = {
+    name: this.props.name ? this.props.name : '', 
+    artist: this.props.artist ? this.props.artist : '', 
+    id: this.props.id ? this.props.id : '',
+  };
 
   handleSubmit = (e) => {
     e.preventDefault()
-
-    this.props.addSong({
-      name: this.state.name,
-      artist: this.state.artist,
-      id: Math.random()
-    })
+    if(this.props.id){
+      //very similar to add except I need to pass the id back up. also used this.props.id
+      // to separate between edit and add form.
+      this.props.editSong({
+        name: this.state.name,
+        artist: this.state.artist,
+        id: this.state.id,
+      })
+    } else {
+      this.props.addSong({
+        name: this.state.name,
+        artist: this.state.artist,
+        id: Math.floor((1 + Math.random())* 1000)
+      })
+    }
   }
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value})
@@ -28,6 +43,7 @@ class SongForm extends React.Component {
           name="name"
           value={this.state.name}
           onChange={this.handleChange}
+          style={{width: '200px'}}
           />
           <Form.Input
           fluid
@@ -36,8 +52,9 @@ class SongForm extends React.Component {
           name="artist"
           value={this.state.artist}
           onChange={this.handleChange}
+          style={{width: '200px'}}
           />
-          <Form.Button>Submit</Form.Button>
+          <Form.Button color='blue'>{this.props.id ? 'Edit' : 'Add'}</Form.Button>
         </Form.Group>
       </Form>
     )
