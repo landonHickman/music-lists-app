@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react';
+import { color5, Flex, Rotate} from './styles';
 
 class SongForm extends React.Component {
   //have to set state equal to props so that name/artist would show up in the input box.
@@ -35,6 +36,7 @@ class SongForm extends React.Component {
   render(){
     return(
       <Form onSubmit={this.handleSubmit}>
+        <Flex >
         <Form.Group widths="equal">
           <Form.Input
           fluid
@@ -45,6 +47,8 @@ class SongForm extends React.Component {
           onChange={this.handleChange}
           style={{width: '200px'}}
           />
+          </Form.Group>
+          <Form.Group widths="equal">
           <Form.Input
           fluid
           label="Artist"
@@ -54,8 +58,11 @@ class SongForm extends React.Component {
           onChange={this.handleChange}
           style={{width: '200px'}}
           />
-          <Form.Button color='blue'>{this.props.id ? 'Edit' : 'Add'}</Form.Button>
         </Form.Group>
+          <Rotate>
+          <Form.Button color={color5} >{this.props.id ? 'Edit' : 'Add'}</Form.Button>
+          </Rotate>
+          </Flex>
       </Form>
     )
   }

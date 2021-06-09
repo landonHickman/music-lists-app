@@ -3,6 +3,7 @@ import {Container, Header} from "semantic-ui-react";
 import Songs from './Songs'
 import SongForm from './SongForm'
 
+
 class App extends React.Component {
   state = {
     songs: [
@@ -62,7 +63,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <Container style={{paddingTop: '25px'}}>
+      <Container>
         <Header as='h1'>React Class Music App</Header>
         <br/>
         <SongForm addSong={this.addSong}/>

@@ -1,5 +1,6 @@
 import React, {useState,} from 'react'
 import { Form } from 'semantic-ui-react'
+import { Flex } from '../styles'
 
 const FuncSongForm = (props) => {
   const {id, addSong, editSong} = props
@@ -7,7 +8,7 @@ const FuncSongForm = (props) => {
   const [artist, setArtist] = useState(props.artist ? props.artist : '')
 
   const rando = () => {
-    return Math.random()
+    return Math.floor((1 + Math.random())* 1000)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -43,7 +44,7 @@ const FuncSongForm = (props) => {
         onChange={(e)=>setArtist(e.target.value)}
         style={{width: '200px'}}
         />
-        <Form.Button color='blue'>{id ? 'Edit' : 'Add'}</Form.Button>
+        <Form.Button >{id ? 'Edit' : 'Add'}</Form.Button>
       </Form.Group>
     </Form>
   )
